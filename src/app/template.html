@@ -1,0 +1,8 @@
+<div [ngClass]="getClasses(1)">
+    The first prodcut is {{ model.getProduct(1)?.name ?? 'None' }}.
+</div>
+<div class="p-2"
+    [class.bg-success]="(model.getProduct(2)?.price ?? 0) < 50"
+    [class.bg-info]="(model.getProduct(2)?.price ?? 0) >= 50">
+    The second product is {{ model.getProduct(2)?.name ?? 'None' }}.
+</div>
