@@ -18,33 +18,28 @@ export class ProductComponent {
         return this.model.getProducts()[position];
     }
 
-    getClassesByPosition(position: number): string {
-        let product = this.getProductByPosition(position);
-        return "p-2 " + ((product?.price ?? 0) < 50 ? "bg-info" : "bg-warning");
+    // getClassesByPosition(position: number): string {
+    //     let product = this.getProductByPosition(position);
+    //     return "p-2 " + ((product?.price ?? 0) < 50 ? "bg-info" : "bg-warning");
+    // }
+
+    getProduct(key: number): Product | undefined {
+        return this.model.getProduct(key);
     }
 
-    // getClasses(key: number): string {
-    //     let product = this.model.getProduct(key);        
-    //     return "p-2 " + ((product?.price ?? 0) > 50 ? "bg-info" : "bg-warning");
-    // }
+    getProducts(): Product[] {
+        return this.model.getProducts();
+    }
 
-    // getClassMap(key: number) {
-    //     let product = this.model.getProduct(key);
-    //     return {
-    //         "text-center bg-danger": product?.name == "Kayak",
-    //         "bg-info": (product?.price ?? 0) < 50
-    //     };
-    // }
+    getProductCount(): number {
+        return this.model.getProducts().length;
+    }
 
-    // fontSizeWithUnits: string = "30px";
-    // fontSizeWithoutUnits: string = "30";
+    targetName: string = "Kayak";
 
-    // getStyles(key: number) {
-    //     let product = this.model.getProduct(key);
-    //     return {
-    //         fontSize: "30px",
-    //         "margin.px": 100,
-    //         color: (product?.price ?? 0) > 50 ? "red" : "green"
-    //     };
-    // }
+    // trackBy function: must receive 2 parameters
+    // index of the object in teh datasource, and the object itself
+    getKey(index: number, product: Product) {
+        return product.id;
+    }
 }

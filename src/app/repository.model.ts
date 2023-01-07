@@ -44,4 +44,11 @@ export class Model {
         }
         return candidate;
     }
+
+    swapProduct() {
+        let p = this.products.shift();
+        if (p != null) {
+            this.products.push(new Product(p.id, p.name, p.category, p.price));
+        }
+    }
 }
