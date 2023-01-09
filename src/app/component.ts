@@ -28,6 +28,7 @@ export class ProductComponent {
     }
 
     getProducts(): Product[] {
+        console.log("getProducts invoked");
         return this.model.getProducts();
     }
 
@@ -41,5 +42,11 @@ export class ProductComponent {
     // index of the object in teh datasource, and the object itself
     getKey(index: number, product: Product) {
         return product.id;
+    }
+
+    counter: number = 1;
+
+    get nextProduct(): Product | undefined {
+        return this.model.getProducts().shift();
     }
 }
