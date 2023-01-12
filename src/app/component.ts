@@ -23,4 +23,10 @@ export class ProductComponent {
     getSelected(product: Product): boolean {
         return product.name == this.selectedProduct;
     }
+
+    handleInputEvent(ev: Event) {
+        if (ev.target instanceof HTMLInputElement) {
+            this.selectedProduct = ev.target.value;
+        }
+    }
 }
