@@ -50,7 +50,7 @@ export class ProductComponent {
                     break;
                 case "minlength":
                     messages.push(`A ${name} must be at least 
-                    ${errs['minlength'].requiredLength}`);
+                    ${errs['minlength'].requiredLength} characters`);
                     break;
                 case "pattern":
                     messages.push(`The ${name} contains illegal characters`);
@@ -75,5 +75,14 @@ export class ProductComponent {
             form.resetForm();
             this.formSubmitted = false;
         }
+    }
+
+    getFormValidationMessages(form: NgForm): string[] {
+        let messages: string[] = [];
+        Object.keys(form.controls).forEach(k => {
+            this.getMessages(form.controls[k].errors, k)
+                .forEach(m => messages.push(m));
+        });
+        return messages;
     }
 }
