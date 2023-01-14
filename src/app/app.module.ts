@@ -6,10 +6,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ProductComponent } from './component';
 import { FormsModule } from '@angular/forms'
+import { PaAttrDirective } from './attr.directive';
 
 @NgModule({
   declarations: [
-    ProductComponent
+    ProductComponent,
+    PaAttrDirective
   ],
   imports: [
     BrowserModule,
