@@ -7,11 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductComponent } from './component';
 import { FormsModule } from '@angular/forms'
 import { PaAttrDirective } from './attr.directive';
+import { PaModel } from './twoway.directive';
 
 @NgModule({
   declarations: [
     ProductComponent,
-    PaAttrDirective
+    PaAttrDirective,
+    PaModel
   ],
   imports: [
     BrowserModule,
