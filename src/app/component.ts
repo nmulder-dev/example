@@ -7,6 +7,8 @@ import { Product } from "./product.model";
 })
 export class ProductComponent {
     model: Model = new Model();
+    showTable: boolean = false;
+    
     getProduct(key: number): Product | undefined {
         return this.model.getProduct(key);
     }
