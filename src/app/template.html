@@ -1,30 +1,24 @@
 <div class="p-2">
 
     <div class="form-check m-2">
-        <inpupt type="checkbox" class="form-check-input" [(ngModel)]="showTable" />
+        <input type="checkbox" class="form-check-input" [(ngModel)]="showTable" />
         <label class="form-check-label">Show Table</label>
     </div>
-
-    <ng-template [paIf]="showTable">
-        <table class="table table-sm table-bordered table-striped">
-            <thead>
+    <table *paIf="showTable" class="table table-sm table-bordered table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-template [paForOf]="getProducts()" let-item>
                 <tr>
-                    <th></th>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Price</th>
+                    <td colspan="4">{{item.name}}</td>
                 </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of getProducts(); let i = index"
-                    [pa-attr]="getProducts().length < 6 ? 'table-success' : 'table-warning'" [pa-product]="item"
-                    (pa-category)="newProduct.category = $event">
-                    <td>{{i + 1}}</td>
-                    <td>{{item.name}}</td>
-                    <td [pa-attr]="item.category == 'Soccer' ? 'table-info' : null">{{item.category}}</td>
-                    <td [pa-attr]="'table-info'">{{item.price}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </ng-template>
+            </ng-template>
+        </tbody>
+    </table>
 </div>
